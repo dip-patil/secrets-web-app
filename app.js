@@ -26,8 +26,10 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+mongoose.connect("mongodb+srv://root:root@cluster0.r14bipw.mongodb.net/?retryWrites=true&w=majority/checksecrets", {useNewUrlParser: true}).then(()=>{
+  console.log("DB Connected");
+});
 
-mongoose.connect("mongodb://localhost:27017/checksecrets", {useNewUrlParser: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
